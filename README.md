@@ -12,12 +12,16 @@ Plataforma automatizada de ETL y BI que extrae datos, los procesa con flujos en 
 
 ---
 
+## Arquitectura del Sistema
+
+![Arquitectura ETL & BI](architecture.png)
+
+---
+
 ## Vista Previa del Dashboard
 
-## Descripción General del Proyecto
-
-![Descripción General del Proyecto](screenshots/dashboard_overview.png)
-![Descripción General del Proyecto](screenshots/preview.png)
+![Vista General del Proyecto](screenshots/dashboard_overview.png)
+![Vista General del Proyecto](screenshots/preview.png)
 
 ---
 
