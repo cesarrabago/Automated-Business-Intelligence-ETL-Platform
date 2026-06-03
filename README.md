@@ -12,9 +12,12 @@ Plataforma automatizada de ETL y BI que extrae datos, los procesa con flujos en 
 
 ---
 
+## Vista Previa del Dashboard
+
 ## Descripción General del Proyecto
 
-![Vista General del Proyecto](screenshots/preview.png)
+![Descripción General del Proyecto](screenshots/dashboard_overview.png)
+![Descripción General del Proyecto](screenshots/preview.png)
 
 ---
 
@@ -77,3 +80,55 @@ graph TD
 ## Esquema de Base de Datos
 
 Esquema en estrella con 1 tabla de hechos, 3 dimensiones, 1 tabla de auditoría y vistas de capa semántica consumidas por Power BI.
+
+| Objeto | Tipo | Descripción |
+|---|---|---|
+| `sales_orders` | Hecho | Granularidad por transacción — una fila por pedido |
+| `dim_products` | Dimensión | Catálogo de modelos de motos |
+| `dim_geography` | Dimensión | Estado / región / nivel |
+| `dim_payment` | Dimensión | Metadatos del método de pago |
+| `pipeline_runs` | Auditoría | Cada ejecución registrada con conteo de filas + estado |
+| `vw_monthly_kpis` | Vista | KPIs pre-agregados para Power BI |
+
+Ver [`sql/schema.sql`](sql/schema.sql) para el DDL completo.
+
+---
+
+## Resultados
+
+| Métrica | Antes | Después |
+|---|---|---|
+| Horas de analista / mes | ~40h | **0h** |
+| Latencia de reportes | 3 días | **< 1 hora** |
+| Tasa de duplicados | 15–20% | **0%** |
+| Ventas netas rastreadas | Fragmentadas | **₹37.41M unificadas** |
+
+---
+
+## Configuración
+
+**Requisitos previos:** Docker, n8n, Power BI Desktop, credenciales OAuth2 de Gmail.
+
+```bash
+git clone https://github.com/YOUR_USERNAME/automated-sales-intelligence-platform
+cd automated-sales-intelligence-platform
+docker-compose up -d
+psql -U postgres -d salesdb -f sql/schema.sql
+psql -U postgres -d salesdb -f sql/seed_dimensions.sql
+```
+
+Luego en n8n: **Settings → Import from file** → `n8n/workflow.json` y configura tus credenciales de Gmail y PostgreSQL.
+
+Copia `.env.example` → `.env` y completa las credenciales de tu base de datos.
+
+---
+
+## Hoja de Ruta
+
+| Prioridad | Funcionalidad |
+|---|---|
+| P1 | Capa de transformación con dbt (modelos staging + mart) |
+| P1 | Dashboard de monitoreo del pipeline sobre `pipeline_runs` |
+| P2 | Manejo de errores + cola de mensajes fallidos + alertas en Slack |
+| P2 | Despliegue en la nube (GCP + Cloud SQL + Power BI Service) |
+| P3 | Migración a Snowflake / BigQuery |
