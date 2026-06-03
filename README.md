@@ -20,7 +20,7 @@ Plataforma automatizada de ETL y BI que extrae datos, los procesa con flujos en 
 
 ## Vista Previa del Dashboard
 
-![Vista General del Proyecto](screenshots/dashboard_overview.png)
+
 ![Vista General del Proyecto](screenshots/preview.png)
 
 ---
