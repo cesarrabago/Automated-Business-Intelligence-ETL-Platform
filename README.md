@@ -94,7 +94,7 @@ Esquema en estrella con 1 tabla de hechos, 3 dimensiones, 1 tabla de auditoría 
 | `pipeline_runs` | Auditoría | Cada ejecución registrada con conteo de filas + estado |
 | `vw_monthly_kpis` | Vista | KPIs pre-agregados para Power BI |
 
-Ver [`sql/schema.sql`](sql/schema.sql) para el DDL completo.
+*El esquema completo y los flujos de n8n están disponibles bajo solicitud.*
 
 ---
 
@@ -117,13 +117,9 @@ Ver [`sql/schema.sql`](sql/schema.sql) para el DDL completo.
 git clone https://github.com/YOUR_USERNAME/automated-sales-intelligence-platform
 cd automated-sales-intelligence-platform
 docker-compose up -d
-psql -U postgres -d salesdb -f sql/schema.sql
-psql -U postgres -d salesdb -f sql/seed_dimensions.sql
 ```
 
-Luego en n8n: **Settings → Import from file** → `n8n/workflow.json` y configura tus credenciales de Gmail y PostgreSQL.
-
-Copia `.env.example` → `.env` y completa las credenciales de tu base de datos.
+> El esquema SQL, los flujos de n8n y la configuración completa están disponibles bajo solicitud.
 
 ---
 
