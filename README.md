@@ -109,19 +109,6 @@ Esquema en estrella con 1 tabla de hechos, 3 dimensiones, 1 tabla de auditoría 
 
 ---
 
-## Configuración
-
-**Requisitos previos:** Docker, n8n, Power BI Desktop, credenciales OAuth2 de Gmail.
-
-```bash
-git clone https://github.com/YOUR_USERNAME/automated-sales-intelligence-platform
-cd automated-sales-intelligence-platform
-docker-compose up -d
-```
-
-> El esquema SQL, los flujos de n8n y la configuración completa están disponibles bajo solicitud.
-
----
 
 ## Hoja de Ruta
 
