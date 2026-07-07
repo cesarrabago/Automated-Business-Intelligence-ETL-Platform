@@ -52,21 +52,6 @@ Las decisiones de negocio sobre inventario, promociones financieras y venta cruz
 
 ---
 
-## Arquitectura
-
-```mermaid
-graph TD
-    A[Bandeja de Entrada Gmail] -->|Adjunto CSV| B[Disparador n8n]
-    B -->|Validar Remitente + Asunto| C{Nodo Filter}
-    C -->|PASA| D[Extract from File]
-    C -->|FALLA| X[Descartar]
-    D -->|1500 filas JSON| E[Transformación JS]
-    E -->|Registros Limpios| F[(PostgreSQL)]
-    F -->|DirectQuery| G[Dashboard Power BI]
-    F -->|Resumen de Ejecución| H[Correo de Notificación]
-```
-
----
 
 ## Stack Tecnológico
 
